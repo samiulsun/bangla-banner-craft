@@ -11,11 +11,6 @@ interface BannerPreviewProps {
 
 const BannerPreview = forwardRef<HTMLDivElement, BannerPreviewProps>(
   ({ style }, ref) => {
-    // Build text shadow CSS
-    const textShadow = style.shadowEnabled
-      ? `${style.shadowX}px ${style.shadowY}px ${style.shadowBlur}px ${style.shadowColor}`
-      : 'none';
-
     // Build background CSS based on type
     const getBackgroundStyle = () => {
       switch (style.backgroundType) {
@@ -37,8 +32,12 @@ const BannerPreview = forwardRef<HTMLDivElement, BannerPreviewProps>(
     return (
       <div
         ref={ref}
-        className="relative w-full h-[600px] rounded-lg overflow-hidden shadow-2xl"
-        style={getBackgroundStyle()}
+        className="relative w-full overflow-hidden shadow-2xl"
+        style={{ 
+          width: '1920px', 
+          height: '1080px',
+          ...getBackgroundStyle() 
+        }}
       >
         <div className="absolute inset-0 flex items-center justify-center p-12">
           <div
@@ -50,7 +49,6 @@ const BannerPreview = forwardRef<HTMLDivElement, BannerPreviewProps>(
               textAlign: style.textAlign,
               letterSpacing: `${style.letterSpacing}px`,
               lineHeight: style.lineHeight,
-              textShadow,
               wordBreak: 'break-word',
               overflowWrap: 'break-word',
             }}

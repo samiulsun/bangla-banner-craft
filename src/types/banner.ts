@@ -11,13 +11,6 @@ export interface BannerStyle {
   letterSpacing: number;
   lineHeight: number;
   
-  // Text shadow
-  shadowEnabled: boolean;
-  shadowX: number;
-  shadowY: number;
-  shadowBlur: number;
-  shadowColor: string;
-  
   // Background
   backgroundType: 'template' | 'gradient' | 'custom' | 'solid';
   backgroundValue: string; // template ID, gradient CSS, custom image URL, or solid color

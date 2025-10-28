@@ -34,11 +34,6 @@ const Index = () => {
     textAlign: 'center',
     letterSpacing: 0,
     lineHeight: 1.4,
-    shadowEnabled: true,
-    shadowX: 2,
-    shadowY: 2,
-    shadowBlur: 8,
-    shadowColor: 'rgba(0, 0, 0, 0.3)',
     backgroundType: 'gradient',
     backgroundValue: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     backgroundColor: '#667eea',
@@ -177,23 +172,12 @@ const Index = () => {
 
           {/* Preview Panel */}
           <section className="space-y-4">
-            <div className="bg-card rounded-lg border shadow-lg p-6">
+            <div className="bg-card rounded-lg border shadow-lg p-6 overflow-auto">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold">লাইভ প্রিভিউ (Live Preview)</h2>
-                <span className="text-xs text-muted-foreground">1200 × 600 px</span>
+                <span className="text-xs text-muted-foreground">1920 × 1080 px</span>
               </div>
               <BannerPreview ref={bannerRef} style={style} />
-            </div>
-
-            <div className="bg-card/50 rounded-lg border border-dashed p-4">
-              <h3 className="text-sm font-medium mb-2">💡 Quick Tips</h3>
-              <ul className="text-xs text-muted-foreground space-y-1">
-                <li>• Use Ctrl+A / Cmd+A to select all text in the input</li>
-                <li>• Templates apply pre-configured styles instantly</li>
-                <li>• Higher resolution (4x) creates larger file sizes</li>
-                <li>• SVG exports are scalable to any size without quality loss</li>
-                <li>• All processing happens in your browser - no data is uploaded</li>
-              </ul>
             </div>
           </section>
         </div>
