@@ -52,7 +52,7 @@ const Index = () => {
 			typeof window !== 'undefined' && window.innerWidth < 768 ? 32 : 64;
 
 		return {
-			text: 'Enter your text here',
+			text: 'আপনার বাংলা টেক্সট এখানে লিখুন',
 			fontFamily: DEFAULT_FONTS[0].family,
 			fontSize: defaultFontSize,
 			color: '#ffffff',
