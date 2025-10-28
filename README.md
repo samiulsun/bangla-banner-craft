@@ -1,73 +1,175 @@
-# Welcome to your Lovable project
+# Banner Craft
 
-## Project info
+A modern, responsive web application for creating and exporting professional banners with custom text, fonts, and designs. Perfect for social media content, marketing materials, and digital graphics.
 
-**URL**: https://lovable.dev/projects/80ca79d0-621e-4155-bd68-131bdd7fbfb7
+## 🎯 Overview
 
-## How can I edit this code?
+Banner Craft is a comprehensive banner maker that empowers users to create stunning visual content with ease. The application features a live preview system, extensive customization options, and multi-format export capabilities, all wrapped in a responsive design that works seamlessly across desktop and mobile devices.
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+### 🎨 Design Capabilities
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/80ca79d0-621e-4155-bd68-131bdd7fbfb7) and start prompting.
+- **Live Preview**: Real-time banner preview with instant updates
+- **Custom Text**: Multi-line text input with dynamic formatting
+- **Font Selection**: Extensive font library with web-safe and custom fonts
+- **Typography Controls**: Font size, weight, alignment, and spacing adjustments
+- **Color Customization**: Full color picker for text and background colors
+- **Background Options**: Solid colors, gradients, and custom styling
 
-Changes made via Lovable will be committed automatically to this repo.
+### 📱 Responsive Design
 
-**Use your preferred IDE**
+- **Mobile-First Approach**: Optimized for mobile devices with preview-first layout
+- **Adaptive Interface**: Responsive components that adapt to screen size
+- **Touch-Friendly**: Mobile-optimized controls and interactions
+- **Smart Defaults**: Automatic font sizing based on device (32px mobile, 64px desktop)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 💾 Export Options
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Multiple Formats**: Export as PNG, JPEG, or SVG
+- **High Quality**: Professional-grade output suitable for print and digital use
+- **Instant Download**: One-click export with automatic file naming
 
-Follow these steps:
+### 🎭 Templates
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **Pre-designed Templates**: Curated collection of professional banner templates
+- **Quick Start**: Ready-to-use designs for common use cases
+- **Customizable Base**: Templates serve as starting points for further customization
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🚀 Use Cases
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Marketing & Business
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+- **Social Media Posts**: Create engaging content for Facebook, Instagram, Twitter, LinkedIn
+- **Digital Advertising**: Banner ads for websites, Google Ads, and social media campaigns
+- **Event Promotion**: Announcement banners for events, webinars, and conferences
+- **Business Graphics**: Professional visuals for presentations and marketing materials
+
+### Content Creation
+
+- **Blog Headers**: Eye-catching headers for blog posts and articles
+- **YouTube Thumbnails**: Custom thumbnails for video content
+- **Newsletter Graphics**: Visual elements for email marketing campaigns
+- **Website Banners**: Hero images and promotional banners for websites
+
+### Personal Projects
+
+- **Social Media Stories**: Custom graphics for Instagram and Facebook stories
+- **Celebration Banners**: Birthday, anniversary, and milestone announcements
+- **Educational Content**: Visual aids for presentations and learning materials
+- **Creative Projects**: Artistic banners for personal branding and portfolios
+
+## 🛠 Technology Stack
+
+### Frontend Framework
+
+- **React 18.3.1**: Modern functional components with hooks
+- **TypeScript 5.8.3**: Type-safe development with enhanced developer experience
+- **Vite 5.4.19**: Fast build tool with hot module replacement
+
+### UI & Styling
+
+- **Tailwind CSS 3.4.15**: Utility-first CSS framework for responsive design
+- **shadcn/ui**: High-quality React components built on Radix UI
+- **Radix UI**: Accessible, unstyled UI primitives
+- **Lucide React**: Beautiful, customizable icons
+
+### Core Features
+
+- **html-to-image**: Canvas-based image export functionality
+- **React Hook Form**: Efficient form handling with validation
+- **Framer Motion**: Smooth animations and transitions (ready for implementation)
+
+### Development Tools
+
+- **ESLint**: Code linting with React and TypeScript support
+- **PostCSS**: CSS processing with Tailwind CSS integration
+- **Bun**: Fast package manager and runtime
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ or Bun runtime
+- Modern web browser with ES6+ support
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd bangla-banner-craft
+
+# Install dependencies with bun (recommended)
+bun install
+
+# Or use npm
+npm install
+
+# Start development server
+bun run dev
+# Or with npm
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Development Server
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Open [http://localhost:5173](http://localhost:5173) to view the application in your browser.
 
-**Use GitHub Codespaces**
+## 📁 Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # shadcn/ui component library
+│   ├── BackgroundControls.tsx
+│   ├── BannerPreview.tsx
+│   ├── ExportControls.tsx
+│   ├── FontControls.tsx
+│   ├── StyleControls.tsx
+│   ├── TemplatePicker.tsx
+│   └── TextInput.tsx
+├── data/               # Static data and configuration
+│   └── templates.ts    # Banner templates and font definitions
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions and helpers
+├── pages/              # Application pages and routing
+├── types/              # TypeScript type definitions
+└── utils/              # Export and font loading utilities
+```
 
-## What technologies are used for this project?
+## 🔧 Building for Production
 
-This project is built with:
+```bash
+# Build for production
+bun run build
+# Or with npm
+npm run build
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Preview production build
+bun run preview
+# Or with npm
+npm run preview
+```
 
-## How can I deploy this project?
+## 🤝 Contributing
 
-Simply open [Lovable](https://lovable.dev/projects/80ca79d0-621e-4155-bd68-131bdd7fbfb7) and click on Share -> Publish.
+We welcome contributions to Banner Craft! Please feel free to submit issues, feature requests, and pull requests.
 
-## Can I connect a custom domain to my Lovable project?
+### Development Guidelines
 
-Yes, you can!
+- Follow TypeScript best practices
+- Maintain responsive design principles
+- Test across different devices and browsers
+- Keep components modular and reusable
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📄 License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🎉 Acknowledgments
+
+- Built with modern React and TypeScript
+- UI components powered by shadcn/ui and Radix UI
+- Icons by Lucide React
+- Styling with Tailwind CSS
