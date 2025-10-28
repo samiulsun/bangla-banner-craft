@@ -40,22 +40,29 @@ import { useCallback } from 'react';
 
 const Index = () => {
 	const bannerRef = useRef<HTMLDivElement>(null);
+	const initializedRef = useRef<boolean>(false);
 	const [customFonts, setCustomFonts] = useState<CustomFont[]>([]);
 	const [exportFormat, setExportFormat] = useState<ExportFormat>('png');
 	const [exportScale, setExportScale] = useState<ExportScale>(2);
 
-	// Banner style state
-	const [style, setStyle] = useState<BannerStyle>({
-		text: 'আপনার বাংলা টেক্সট এখানে লিখুন',
-		fontFamily: DEFAULT_FONTS[0].family,
-		fontSize: 64,
-		color: '#ffffff',
-		textAlign: 'center',
-		letterSpacing: 0,
-		lineHeight: 1.4,
-		backgroundType: 'gradient',
-		backgroundValue: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-		backgroundColor: '#667eea',
+	// Banner style state with responsive default font size
+	const [style, setStyle] = useState<BannerStyle>(() => {
+		// Get default font size based on screen size at initialization
+		const defaultFontSize =
+			typeof window !== 'undefined' && window.innerWidth < 768 ? 32 : 64;
+
+		return {
+			text: 'Enter your text here',
+			fontFamily: DEFAULT_FONTS[0].family,
+			fontSize: defaultFontSize,
+			color: '#ffffff',
+			textAlign: 'center',
+			letterSpacing: 0,
+			lineHeight: 1.4,
+			backgroundType: 'gradient',
+			backgroundValue: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+			backgroundColor: '#667eea',
+		};
 	});
 
 	// Update style helper
