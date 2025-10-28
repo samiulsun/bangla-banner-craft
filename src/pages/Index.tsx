@@ -206,7 +206,7 @@ const Index = () => {
 			<div className='relative z-10 flex items-center justify-center py-3 sm:py-4 md:py-5'>
 				<div className='text-center px-4'>
 					<h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-400 bg-clip-text text-transparent drop-shadow-xl'>
-						Banner Maker
+						Bangla Banner Craft
 					</h1>
 				</div>
 			</div>
