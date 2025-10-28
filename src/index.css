@@ -7,88 +7,125 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  :root {
-    --background: 240 20% 99%;
-    --foreground: 240 10% 10%;
+	:root {
+		--background: 240 20% 99%;
+		--foreground: 240 10% 10%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 10%;
+		--card: 0 0% 100%;
+		--card-foreground: 240 10% 10%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
+		--popover: 0 0% 100%;
+		--popover-foreground: 240 10% 10%;
 
-    --primary: 262 70% 58%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 262 80% 70%;
+		--primary: 262 70% 58%;
+		--primary-foreground: 0 0% 100%;
+		--primary-glow: 262 80% 70%;
 
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 10% 10%;
+		--secondary: 240 5% 96%;
+		--secondary-foreground: 240 10% 10%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
+		--muted: 240 5% 96%;
+		--muted-foreground: 240 4% 46%;
 
-    --accent: 200 95% 55%;
-    --accent-foreground: 0 0% 100%;
+		--accent: 200 95% 55%;
+		--accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+		--destructive: 0 84% 60%;
+		--destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 262 70% 58%;
+		--border: 240 6% 90%;
+		--input: 240 6% 90%;
+		--ring: 262 70% 58%;
 
-    --radius: 0.75rem;
+		--radius: 0.75rem;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(262 70% 58%), hsl(200 95% 55%));
-    --gradient-secondary: linear-gradient(135deg, hsl(320 85% 55%), hsl(262 70% 58%));
-    --gradient-warm: linear-gradient(135deg, hsl(30 90% 60%), hsl(350 85% 60%));
-    --shadow-elegant: 0 10px 40px -10px hsl(262 70% 58% / 0.3);
-    --shadow-soft: 0 4px 20px -2px hsl(240 10% 10% / 0.1);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+		/* Custom design tokens */
+		--gradient-primary: linear-gradient(
+			135deg,
+			hsl(262 70% 58%),
+			hsl(200 95% 55%)
+		);
+		--gradient-secondary: linear-gradient(
+			135deg,
+			hsl(320 85% 55%),
+			hsl(262 70% 58%)
+		);
+		--gradient-warm: linear-gradient(135deg, hsl(30 90% 60%), hsl(350 85% 60%));
+		--shadow-elegant: 0 10px 40px -10px hsl(262 70% 58% / 0.3);
+		--shadow-soft: 0 4px 20px -2px hsl(240 10% 10% / 0.1);
+		--transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
 
-  .dark {
-    --background: 240 10% 8%;
-    --foreground: 240 5% 96%;
+	.dark {
+		--background: 240 10% 8%;
+		--foreground: 240 5% 96%;
 
-    --card: 240 10% 10%;
-    --card-foreground: 240 5% 96%;
+		--card: 240 10% 10%;
+		--card-foreground: 240 5% 96%;
 
-    --popover: 240 10% 10%;
-    --popover-foreground: 240 5% 96%;
+		--popover: 240 10% 10%;
+		--popover-foreground: 240 5% 96%;
 
-    --primary: 262 80% 65%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 262 90% 75%;
+		--primary: 262 80% 65%;
+		--primary-foreground: 0 0% 100%;
+		--primary-glow: 262 90% 75%;
 
-    --secondary: 240 10% 15%;
-    --secondary-foreground: 240 5% 96%;
+		--secondary: 240 10% 15%;
+		--secondary-foreground: 240 5% 96%;
 
-    --muted: 240 10% 15%;
-    --muted-foreground: 240 5% 65%;
+		--muted: 240 10% 15%;
+		--muted-foreground: 240 5% 65%;
 
-    --accent: 200 95% 60%;
-    --accent-foreground: 0 0% 100%;
+		--accent: 200 95% 60%;
+		--accent-foreground: 0 0% 100%;
 
-    --destructive: 0 75% 55%;
-    --destructive-foreground: 0 0% 100%;
+		--destructive: 0 75% 55%;
+		--destructive-foreground: 0 0% 100%;
 
-    --border: 240 10% 18%;
-    --input: 240 10% 18%;
-    --ring: 262 80% 65%;
-    
-    --shadow-elegant: 0 10px 40px -10px hsl(262 80% 65% / 0.4);
-    --shadow-soft: 0 4px 20px -2px hsl(0 0% 0% / 0.3);
-  }
+		--border: 240 10% 18%;
+		--input: 240 10% 18%;
+		--ring: 262 80% 65%;
+
+		--shadow-elegant: 0 10px 40px -10px hsl(262 80% 65% / 0.4);
+		--shadow-soft: 0 4px 20px -2px hsl(0 0% 0% / 0.3);
+	}
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+	* {
+		@apply border-border;
+	}
 
-  body {
-    @apply bg-background text-foreground;
-  }
+	body {
+		@apply bg-background text-foreground;
+	}
+
+	/* Prevent zooming on mobile devices */
+	html {
+		touch-action: manipulation;
+		-webkit-text-size-adjust: 100%;
+		-ms-text-size-adjust: 100%;
+	}
+
+	/* Prevent double-tap zoom */
+	button,
+	input,
+	select,
+	textarea {
+		touch-action: manipulation;
+	}
+
+	/* Additional mobile optimizations */
+	* {
+		-webkit-tap-highlight-color: transparent;
+		-webkit-touch-callout: none;
+	}
+
+	/* Prevent text selection on mobile for UI elements */
+	.no-select {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
 }

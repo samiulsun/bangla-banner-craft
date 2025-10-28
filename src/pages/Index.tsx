@@ -23,6 +23,7 @@ import {
 	loadCustomFont,
 	generateFontFamilyName,
 	isValidFontFile,
+	loadExternalFont,
 } from '@/utils/fontLoader';
 import { exportBanner, validateExportRequirements } from '@/utils/exportBanner';
 import { toast } from 'sonner';
@@ -96,6 +97,16 @@ const Index = () => {
 		}
 	}, []);
 
+	// Load external fonts on component mount
+	useEffect(() => {
+		// Load all fonts that have URLs
+		DEFAULT_FONTS.forEach((font) => {
+			if (font.url) {
+				loadExternalFont(font.family, font.url);
+			}
+		});
+	}, []);
+
 	// Listen for font upload events
 	useEffect(() => {
 		const handleFontUploadEvent = (e: Event) => {
@@ -108,6 +119,52 @@ const Index = () => {
 			window.removeEventListener('fontUpload', handleFontUploadEvent);
 		};
 	}, [handleFontUpload]);
+
+	// Prevent zooming on mobile devices
+	useEffect(() => {
+		// Prevent pinch-to-zoom
+		const preventZoom = (e: TouchEvent) => {
+			if (e.touches.length > 1) {
+				e.preventDefault();
+			}
+		};
+
+		// Prevent double-tap zoom
+		let lastTouchEnd = 0;
+		const preventDoubleTabZoom = (e: TouchEvent) => {
+			const now = new Date().getTime();
+			if (now - lastTouchEnd <= 300) {
+				e.preventDefault();
+			}
+			lastTouchEnd = now;
+		};
+
+		// Prevent keyboard zoom (Ctrl/Cmd + +/-)
+		const preventKeyboardZoom = (e: KeyboardEvent) => {
+			if (
+				(e.ctrlKey || e.metaKey) &&
+				(e.key === '+' || e.key === '-' || e.key === '=')
+			) {
+				e.preventDefault();
+			}
+		};
+
+		// Add event listeners
+		document.addEventListener('touchstart', preventZoom, { passive: false });
+		document.addEventListener('touchend', preventDoubleTabZoom, {
+			passive: false,
+		});
+		document.addEventListener('keydown', preventKeyboardZoom, {
+			passive: false,
+		});
+
+		// Cleanup
+		return () => {
+			document.removeEventListener('touchstart', preventZoom);
+			document.removeEventListener('touchend', preventDoubleTabZoom);
+			document.removeEventListener('keydown', preventKeyboardZoom);
+		};
+	}, []);
 
 	// Handle export
 	const handleExport = async (format?: ExportFormat, scale?: ExportScale) => {
@@ -135,7 +192,7 @@ const Index = () => {
 		<div
 			className='flex flex-col h-screen relative'
 			style={{
-				backgroundImage: `url('/vecteezy_seamless-dark-mystery-green-leaves-vine-plant-in-layers.jpg')`,
+				backgroundImage: `url('/abstract-textured-backgound.jpg')`,
 				backgroundSize: 'cover',
 				backgroundPosition: 'center',
 				backgroundRepeat: 'no-repeat',
@@ -160,9 +217,9 @@ const Index = () => {
 					{/* Mobile: Stack vertically with preview on top, Desktop: Side by side */}
 					<div className='flex flex-col lg:grid lg:grid-cols-[400px_1fr] gap-4 lg:gap-6 h-full'>
 						{/* Preview Panel - Shows first on mobile */}
-						<section className='flex flex-col order-1 lg:order-2 h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-full lg:max-h-[calc(100vh-140px)]'>
-							<div className='bg-slate-900/85 backdrop-blur-2xl rounded-xl lg:rounded-2xl border border-emerald-700/20 shadow-2xl shadow-black/30 p-3 sm:p-4 lg:p-6 h-full flex flex-col'>
-								<div className='flex items-center justify-between mb-3 lg:mb-4 shrink-0'>
+						<section className='flex flex-col order-1 lg:order-2 '>
+							<div className='bg-slate-900/85 backdrop-blur-2xl rounded-xl lg:rounded-2xl border border-emerald-700/20 shadow-2xl shadow-black/30 p-3 sm:p-4 lg:p-6  flex flex-col'>
+								<div className='flex items-center justify-between mb-1 lg:mb-4 shrink-0'>
 									<div className='flex items-center gap-2 lg:gap-3'>
 										<div className='w-2 h-2 rounded-full bg-emerald-400 animate-pulse'></div>
 										<h2 className='text-base lg:text-lg font-semibold text-emerald-100'>
@@ -243,7 +300,7 @@ const Index = () => {
 										</DropdownMenu>
 									</div>
 								</div>
-								<div className='flex-1 overflow-hidden rounded-lg lg:rounded-xl bg-slate-800/30 p-2 sm:p-3 lg:p-4'>
+								<div className='flex-1 overflow-hidden rounded-lg lg:rounded-xl bg-slate-800/30 '>
 									<BannerPreview ref={bannerRef} style={style} />
 								</div>
 							</div>

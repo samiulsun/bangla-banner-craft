@@ -73,9 +73,43 @@ export const DEFAULT_TEMPLATES: Template[] = [
 	},
 ];
 
-// Default fonts (using Google Fonts)
+// Default fonts (using Google Fonts and custom fonts)
 export const DEFAULT_FONTS = [
 	{ family: 'Hind Siliguri', displayName: 'Hind Siliguri' },
-	{ family: 'Noto Sans Bengali', displayName: 'Noto Sans Bengali' },
 	{ family: 'Tiro Bangla', displayName: 'Tiro Bangla' },
+	{
+		family: 'Abu Sayed',
+		displayName: 'Abu Sayed',
+		url: '/fonts/AbuSayed.ttf',
+	},
+	{
+		family: 'Kopotakkho',
+		displayName: 'Kopotakkho',
+		url: '/fonts/Kopotakkho Unicode Regular.ttf',
+	},
+	{
+		family: 'Teesta',
+		displayName: 'Teesta',
+		url: '/fonts/Li Chayana Teesta Unicode.ttf',
+	},
+	{
+		family: 'Mitra Mono',
+		displayName: 'Mitra',
+		url: '/fonts/mitra.ttf',
+	},
+	{
+		family: 'Dhaleshwari',
+		displayName: 'Dhaleshwari',
+		url: '/fonts/Dhaleshwari Normal.ttf',
+	},
+	{
+		family: 'Dhaka Nagari',
+		displayName: 'Dhaka Nagari',
+		url: '/fonts/FN Mahin Dhaka Nagari PM Regular.ttf',
+	},
+	{
+		family: 'FN Mahin Dui Dashok Regular',
+		displayName: 'Dui Dashok',
+		url: '/fonts/FN Mahin Dui Dashok Regular.ttf',
+	},
 ];
