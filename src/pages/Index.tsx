@@ -172,10 +172,10 @@ const Index = () => {
 
           {/* Preview Panel */}
           <section className="space-y-4">
-            <div className="bg-card rounded-lg border shadow-lg p-6 overflow-auto">
+            <div className="bg-card rounded-lg border shadow-lg p-6">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold">লাইভ প্রিভিউ (Live Preview)</h2>
-                <span className="text-xs text-muted-foreground">1920 × 1080 px</span>
+                <span className="text-xs text-muted-foreground">1200 × 600 px</span>
               </div>
               <BannerPreview ref={bannerRef} style={style} />
             </div>
