@@ -32,7 +32,7 @@ const BannerPreview = forwardRef<HTMLDivElement, BannerPreviewProps>(
     return (
       <div
         ref={ref}
-        className="relative w-full h-[600px] rounded-lg overflow-hidden shadow-2xl"
+        className="relative w-full aspect-[2/1] rounded-lg overflow-hidden shadow-2xl"
         style={getBackgroundStyle()}
       >
         <div className="absolute inset-0 flex items-center justify-center p-12">

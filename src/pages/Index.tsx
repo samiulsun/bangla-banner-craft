@@ -111,84 +111,83 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-secondary to-background">
+    <div className="flex flex-col h-screen bg-gradient-to-br from-background via-secondary to-background">
       {/* Header */}
-      <header className="border-b bg-card/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="container mx-auto px-4 py-4">
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+      <header className="border-b bg-card/80 backdrop-blur-sm shrink-0">
+        <div className="container mx-auto px-4 py-3 lg:py-4">
+          <h1 className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             বাংলা ব্যানার মেকার
           </h1>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-xs lg:text-sm text-muted-foreground mt-1">
             Create stunning Bangla text banners • Client-side • No signup required
           </p>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
-        <div className="grid lg:grid-cols-[400px_1fr] gap-6">
+      <main className="flex-1 overflow-hidden">
+        <div className="container mx-auto px-4 py-4 lg:py-6 h-full">
+          <div className="grid lg:grid-cols-[380px_1fr] gap-4 lg:gap-6 h-full">
           {/* Controls Panel */}
-          <aside className="space-y-4">
-            <div className="bg-card rounded-lg border shadow-lg p-6">
-              <Tabs defaultValue="text" className="w-full">
-                <TabsList className="grid w-full grid-cols-3">
-                  <TabsTrigger value="text">Text</TabsTrigger>
-                  <TabsTrigger value="style">Style</TabsTrigger>
-                  <TabsTrigger value="background">BG</TabsTrigger>
-                </TabsList>
+          <aside className="flex flex-col h-full max-h-[calc(100vh-180px)] lg:max-h-[calc(100vh-140px)]">
+            <ScrollArea className="flex-1">
+              <div className="space-y-4 pr-2">
+                <div className="bg-card rounded-lg border shadow-lg p-4 lg:p-6">
+                  <Tabs defaultValue="text" className="w-full">
+                    <TabsList className="grid w-full grid-cols-3">
+                      <TabsTrigger value="text" className="text-xs lg:text-sm">Text</TabsTrigger>
+                      <TabsTrigger value="style" className="text-xs lg:text-sm">Style</TabsTrigger>
+                      <TabsTrigger value="background" className="text-xs lg:text-sm">BG</TabsTrigger>
+                    </TabsList>
 
-                <TabsContent value="text" className="space-y-4 mt-4">
-                  <TextInput value={style.text} onChange={(text) => updateStyle({ text })} />
-                  <Separator />
-                  <FontControls
-                    selectedFont={style.fontFamily}
-                    onFontChange={(font) => updateStyle({ fontFamily: font })}
-                    customFonts={customFonts}
-                    onCustomFontUpload={() => {}}
-                  />
-                </TabsContent>
+                    <TabsContent value="text" className="space-y-4 mt-4">
+                      <TextInput value={style.text} onChange={(text) => updateStyle({ text })} />
+                      <Separator />
+                      <FontControls
+                        selectedFont={style.fontFamily}
+                        onFontChange={(font) => updateStyle({ fontFamily: font })}
+                        customFonts={customFonts}
+                        onCustomFontUpload={() => {}}
+                      />
+                    </TabsContent>
 
-                <TabsContent value="style" className="mt-4">
-                  <ScrollArea className="h-[500px] pr-4">
-                    <StyleControls style={style} onStyleChange={updateStyle} />
-                  </ScrollArea>
-                </TabsContent>
+                    <TabsContent value="style" className="mt-4">
+                      <StyleControls style={style} onStyleChange={updateStyle} />
+                    </TabsContent>
 
-                <TabsContent value="background" className="space-y-4 mt-4">
-                  <BackgroundControls style={style} onStyleChange={updateStyle} />
-                  <Separator />
-                  <ScrollArea className="h-[400px] pr-4">
-                    <TemplatePicker
-                      selectedTemplateId={selectedTemplateId}
-                      onTemplateSelect={handleTemplateSelect}
-                    />
-                  </ScrollArea>
-                </TabsContent>
-              </Tabs>
-            </div>
+                    <TabsContent value="background" className="space-y-4 mt-4">
+                      <BackgroundControls style={style} onStyleChange={updateStyle} />
+                      <Separator />
+                      <div className="max-h-[300px] overflow-y-auto pr-2">
+                        <TemplatePicker
+                          selectedTemplateId={selectedTemplateId}
+                          onTemplateSelect={handleTemplateSelect}
+                        />
+                      </div>
+                    </TabsContent>
+                  </Tabs>
+                </div>
 
-            <ExportControls onExport={handleExport} />
+                <ExportControls onExport={handleExport} />
+              </div>
+            </ScrollArea>
           </aside>
 
           {/* Preview Panel */}
-          <section className="space-y-4">
-            <div className="bg-card rounded-lg border shadow-lg p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-semibold">লাইভ প্রিভিউ (Live Preview)</h2>
+          <section className="flex flex-col h-full max-h-[calc(100vh-180px)] lg:max-h-[calc(100vh-140px)]">
+            <div className="bg-card rounded-lg border shadow-lg p-4 lg:p-6 h-full flex flex-col">
+              <div className="flex items-center justify-between mb-3 lg:mb-4 shrink-0">
+                <h2 className="text-base lg:text-lg font-semibold">লাইভ প্রিভিউ (Live Preview)</h2>
                 <span className="text-xs text-muted-foreground">1200 × 600 px</span>
               </div>
-              <BannerPreview ref={bannerRef} style={style} />
+              <div className="flex-1 overflow-auto">
+                <BannerPreview ref={bannerRef} style={style} />
+              </div>
             </div>
           </section>
+          </div>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="mt-16 border-t bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-6 text-center text-sm text-muted-foreground">
-          <p>Made with ❤️ for the Bangla community • All processing is client-side</p>
-        </div>
-      </footer>
     </div>
   );
 };
