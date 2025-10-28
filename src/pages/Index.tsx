@@ -37,7 +37,6 @@ import {
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useCallback } from 'react';
-import CircularText from '@/components/mvpblocks/circular-text';
 
 const Index = () => {
 	const bannerRef = useRef<HTMLDivElement>(null);
@@ -67,8 +66,8 @@ const Index = () => {
 	// Handle custom font upload
 	const handleFontUpload = useCallback(async (file: File) => {
 		if (!isValidFontFile(file)) {
-			toast.error('অবৈধ ফন্ট ফাইল', {
-				description: 'শুধুমাত্র TTF, WOFF, WOFF2, OTF সমর্থিত',
+			toast.error('Invalid font file', {
+				description: 'Only TTF, WOFF, WOFF2, OTF formats are supported',
 			});
 			return;
 		}
@@ -80,12 +79,12 @@ const Index = () => {
 			setCustomFonts((prev) => [...prev, customFont]);
 			updateStyle({ fontFamily: customFont.family });
 
-			toast.success('ফন্ট আপলোড সফল!', {
+			toast.success('Font uploaded successfully!', {
 				description: customFont.displayName,
 			});
 		} catch (error) {
-			toast.error('ফন্ট আপলোড ব্যর্থ', {
-				description: error instanceof Error ? error.message : 'অজানা ত্রুটি',
+			toast.error('Font upload failed', {
+				description: error instanceof Error ? error.message : 'Unknown error',
 			});
 		}
 	}, []);
@@ -115,10 +114,10 @@ const Index = () => {
 				scale: scale || exportScale,
 				filename,
 			});
-			toast.success('ব্যানার সফলভাবে ডাউনলোড হয়েছে!');
+			toast.success('Banner downloaded successfully!');
 		} catch (error) {
-			toast.error('রপ্তানি ব্যর্থ', {
-				description: error instanceof Error ? error.message : 'অজানা ত্রুটি',
+			toast.error('Export failed', {
+				description: error instanceof Error ? error.message : 'Unknown error',
 			});
 		}
 	};
@@ -143,7 +142,7 @@ const Index = () => {
 			<div className='relative z-10 flex items-center justify-center py-3 sm:py-4 md:py-5'>
 				<div className='text-center px-4'>
 					<h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-400 bg-clip-text text-transparent drop-shadow-xl'>
-						বাংলা ব্যানার মেকার
+						Banner Maker
 					</h1>
 				</div>
 			</div>
@@ -151,12 +150,103 @@ const Index = () => {
 			{/* Main Content */}
 			<main className='relative z-10 flex-1 overflow-hidden'>
 				<div className='container mx-auto px-3 sm:px-4 py-3 sm:py-4 lg:py-6 h-full'>
-					<div className='grid lg:grid-cols-[400px_1fr] gap-4 lg:gap-6 h-full'>
-						{/* Controls Panel */}
-						<aside className='flex flex-col h-full max-h-[calc(100vh-140px)] sm:max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-160px)]'>
+					{/* Mobile: Stack vertically with preview on top, Desktop: Side by side */}
+					<div className='flex flex-col lg:grid lg:grid-cols-[400px_1fr] gap-4 lg:gap-6 h-full'>
+						{/* Preview Panel - Shows first on mobile */}
+						<section className='flex flex-col order-1 lg:order-2 h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-full lg:max-h-[calc(100vh-140px)]'>
+							<div className='bg-slate-900/85 backdrop-blur-2xl rounded-xl lg:rounded-2xl border border-emerald-700/20 shadow-2xl shadow-black/30 p-3 sm:p-4 lg:p-6 h-full flex flex-col'>
+								<div className='flex items-center justify-between mb-3 lg:mb-4 shrink-0'>
+									<div className='flex items-center gap-2 lg:gap-3'>
+										<div className='w-2 h-2 rounded-full bg-emerald-400 animate-pulse'></div>
+										<h2 className='text-base lg:text-lg font-semibold text-emerald-100'>
+											Live Preview
+										</h2>
+									</div>
+									<div className='flex items-center gap-1 sm:gap-2'>
+										<span className='text-xs sm:text-sm text-emerald-200/80 font-mono bg-slate-800/50 px-2 sm:px-3 py-1 rounded-lg'>
+											1200 × 600 px
+										</span>
+
+										{/* Download Options */}
+										<DropdownMenu>
+											<DropdownMenuTrigger asChild>
+												<Button
+													size='sm'
+													variant='ghost'
+													className='text-emerald-200 hover:text-white hover:bg-emerald-600/20 rounded-lg transition-colors gap-1 sm:gap-2 px-2 sm:px-3 py-2 text-xs sm:text-sm'
+												>
+													<Download className='w-3 sm:w-4 h-3 sm:h-4' />
+													<span className='hidden sm:inline'>Download</span>
+													<ChevronDown className='w-3 h-3' />
+												</Button>
+											</DropdownMenuTrigger>
+											<DropdownMenuContent
+												align='end'
+												className='w-52 sm:w-56 bg-slate-900/95 backdrop-blur-xl border-emerald-700/30'
+											>
+												<DropdownMenuLabel className='text-emerald-200 text-xs sm:text-sm'>
+													Export Format
+												</DropdownMenuLabel>
+												<DropdownMenuSeparator className='bg-emerald-700/30' />
+												<DropdownMenuItem
+													onClick={() => handleExport('png', 1)}
+													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer text-xs sm:text-sm'
+												>
+													PNG - Standard (1x)
+												</DropdownMenuItem>
+												<DropdownMenuItem
+													onClick={() => handleExport('png', 2)}
+													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer text-xs sm:text-sm'
+												>
+													PNG - High Quality (2x)
+												</DropdownMenuItem>
+												<DropdownMenuItem
+													onClick={() => handleExport('png', 4)}
+													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer text-xs sm:text-sm'
+												>
+													PNG - Ultra Quality (4x)
+												</DropdownMenuItem>
+												<DropdownMenuSeparator className='bg-emerald-700/30' />
+												<DropdownMenuItem
+													onClick={() => handleExport('jpeg', 1)}
+													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer text-xs sm:text-sm'
+												>
+													JPEG - Standard (1x)
+												</DropdownMenuItem>
+												<DropdownMenuItem
+													onClick={() => handleExport('jpeg', 2)}
+													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer text-xs sm:text-sm'
+												>
+													JPEG - High Quality (2x)
+												</DropdownMenuItem>
+												<DropdownMenuItem
+													onClick={() => handleExport('jpeg', 4)}
+													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer text-xs sm:text-sm'
+												>
+													JPEG - Ultra Quality (4x)
+												</DropdownMenuItem>
+												<DropdownMenuSeparator className='bg-emerald-700/30' />
+												<DropdownMenuItem
+													onClick={() => handleExport('svg', 1)}
+													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer text-xs sm:text-sm'
+												>
+													SVG - Vector Format
+												</DropdownMenuItem>
+											</DropdownMenuContent>
+										</DropdownMenu>
+									</div>
+								</div>
+								<div className='flex-1 overflow-hidden rounded-lg lg:rounded-xl bg-slate-800/30 p-2 sm:p-3 lg:p-4'>
+									<BannerPreview ref={bannerRef} style={style} />
+								</div>
+							</div>
+						</section>
+
+						{/* Controls Panel - Shows second on mobile */}
+						<aside className='flex flex-col order-2 lg:order-1 h-[55vh] sm:h-[50vh] md:h-[45vh] lg:h-full lg:max-h-[calc(100vh-140px)]'>
 							<ScrollArea className='flex-1'>
-								<div className='space-y-3 lg:space-y-4 pr-2'>
-									<div className='bg-slate-900/85 backdrop-blur-2xl rounded-xl lg:rounded-2xl border border-emerald-700/20 shadow-2xl shadow-black/30 p-4 sm:p-5 lg:p-6'>
+								<div className='space-y-3 lg:space-y-4 pr-1 lg:pr-2'>
+									<div className='bg-slate-900/85 backdrop-blur-2xl rounded-xl lg:rounded-2xl border border-emerald-700/20 shadow-2xl shadow-black/30 p-3 sm:p-4 lg:p-6'>
 										<Tabs defaultValue='text' className='w-full'>
 											<TabsList className='grid w-full grid-cols-3 bg-slate-800/50 border border-emerald-700/20 rounded-lg lg:rounded-xl p-1'>
 												<TabsTrigger
@@ -181,7 +271,7 @@ const Index = () => {
 
 											<TabsContent
 												value='text'
-												className='space-y-4 lg:space-y-6 mt-4 lg:mt-6'
+												className='space-y-3 sm:space-y-4 lg:space-y-6 mt-3 sm:mt-4 lg:mt-6'
 											>
 												<TextInput
 													value={style.text}
@@ -198,7 +288,10 @@ const Index = () => {
 												/>
 											</TabsContent>
 
-											<TabsContent value='style' className='mt-4 lg:mt-6'>
+											<TabsContent
+												value='style'
+												className='mt-3 sm:mt-4 lg:mt-6'
+											>
 												<StyleControls
 													style={style}
 													onStyleChange={updateStyle}
@@ -207,7 +300,7 @@ const Index = () => {
 
 											<TabsContent
 												value='background'
-												className='space-y-4 lg:space-y-6 mt-4 lg:mt-6'
+												className='space-y-3 sm:space-y-4 lg:space-y-6 mt-3 sm:mt-4 lg:mt-6'
 											>
 												<BackgroundControls
 													style={style}
@@ -219,101 +312,9 @@ const Index = () => {
 								</div>
 							</ScrollArea>
 						</aside>
-
-						{/* Preview Panel */}
-						<section className='flex flex-col h-full max-h-[calc(100vh-140px)] sm:max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-160px)]'>
-							<div className='bg-slate-900/85 backdrop-blur-2xl rounded-2xl border border-emerald-700/20 shadow-2xl shadow-black/30 p-4 sm:p-5 lg:p-6 h-full flex flex-col'>
-								<div className='flex items-center justify-between mb-4 shrink-0'>
-									<div className='flex items-center gap-3'>
-										<div className='w-2 h-2 rounded-full bg-emerald-400 animate-pulse'></div>
-										<h2 className='text-lg font-semibold text-emerald-100'>
-											লাইভ প্রিভিউ (Live Preview)
-										</h2>
-									</div>
-									<div className='flex items-center gap-2'>
-										<span className='text-sm text-emerald-200/80 font-mono bg-slate-800/50 px-3 py-1 rounded-lg'>
-											1200 × 600 px
-										</span>
-
-										{/* Download Options */}
-										<DropdownMenu>
-											<DropdownMenuTrigger asChild>
-												<Button
-													size='sm'
-													variant='ghost'
-													className='text-emerald-200 hover:text-white hover:bg-emerald-600/20 rounded-lg transition-colors gap-2 px-3 py-2'
-												>
-													<Download className='w-4 h-4' />
-													Download
-													<ChevronDown className='w-3 h-3' />
-												</Button>
-											</DropdownMenuTrigger>
-											<DropdownMenuContent
-												align='end'
-												className='w-56 bg-slate-900/95 backdrop-blur-xl border-emerald-700/30'
-											>
-												<DropdownMenuLabel className='text-emerald-200'>
-													Export Format
-												</DropdownMenuLabel>
-												<DropdownMenuSeparator className='bg-emerald-700/30' />
-												<DropdownMenuItem
-													onClick={() => handleExport('png', 1)}
-													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer'
-												>
-													PNG - Standard (1x)
-												</DropdownMenuItem>
-												<DropdownMenuItem
-													onClick={() => handleExport('png', 2)}
-													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer'
-												>
-													PNG - High Quality (2x)
-												</DropdownMenuItem>
-												<DropdownMenuItem
-													onClick={() => handleExport('png', 4)}
-													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer'
-												>
-													PNG - Ultra Quality (4x)
-												</DropdownMenuItem>
-												<DropdownMenuSeparator className='bg-emerald-700/30' />
-												<DropdownMenuItem
-													onClick={() => handleExport('jpeg', 1)}
-													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer'
-												>
-													JPEG - Standard (1x)
-												</DropdownMenuItem>
-												<DropdownMenuItem
-													onClick={() => handleExport('jpeg', 2)}
-													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer'
-												>
-													JPEG - High Quality (2x)
-												</DropdownMenuItem>
-												<DropdownMenuItem
-													onClick={() => handleExport('jpeg', 4)}
-													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer'
-												>
-													JPEG - Ultra Quality (4x)
-												</DropdownMenuItem>
-												<DropdownMenuSeparator className='bg-emerald-700/30' />
-												<DropdownMenuItem
-													onClick={() => handleExport('svg', 1)}
-													className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer'
-												>
-													SVG - Vector Format
-												</DropdownMenuItem>
-											</DropdownMenuContent>
-										</DropdownMenu>
-									</div>
-								</div>
-								<div className='flex-1 overflow-auto rounded-xl bg-slate-800/30 p-4'>
-									<BannerPreview ref={bannerRef} style={style} />
-								</div>
-							</div>
-						</section>
 					</div>
 				</div>
 			</main>
-
-
 		</div>
 	);
 };

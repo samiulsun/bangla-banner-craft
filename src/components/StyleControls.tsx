@@ -17,12 +17,14 @@ interface StyleControlsProps {
 
 const StyleControls = ({ style, onStyleChange }: StyleControlsProps) => {
 	return (
-		<div className='space-y-6'>
+		<div className='space-y-4 sm:space-y-5 lg:space-y-6'>
 			{/* Font Size */}
 			<div className='space-y-2'>
 				<div className='flex items-center justify-between'>
-					<Label className='text-emerald-200'>Font Size</Label>
-					<span className='text-sm text-emerald-300/80'>
+					<Label className='text-xs sm:text-sm text-emerald-200'>
+						Font Size
+					</Label>
+					<span className='text-xs sm:text-sm text-emerald-300/80'>
 						{style.fontSize}px
 					</span>
 				</div>
@@ -38,7 +40,10 @@ const StyleControls = ({ style, onStyleChange }: StyleControlsProps) => {
 
 			{/* Text Color */}
 			<div className='space-y-2'>
-				<Label htmlFor='text-color' className='text-emerald-200'>
+				<Label
+					htmlFor='text-color'
+					className='text-xs sm:text-sm text-emerald-200'
+				>
 					Text Color
 				</Label>
 				<div className='flex gap-2'>
@@ -47,13 +52,13 @@ const StyleControls = ({ style, onStyleChange }: StyleControlsProps) => {
 						type='color'
 						value={style.color}
 						onChange={(e) => onStyleChange({ color: e.target.value })}
-						className='h-10 w-20 cursor-pointer bg-slate-800/50 border-emerald-700/30'
+						className='h-8 sm:h-9 lg:h-10 w-16 sm:w-18 lg:w-20 cursor-pointer bg-slate-800/50 border-emerald-700/30'
 					/>
 					<Input
 						type='text'
 						value={style.color}
 						onChange={(e) => onStyleChange({ color: e.target.value })}
-						className='flex-1 font-mono text-sm bg-slate-800/50 border-emerald-700/30 text-emerald-100 focus:ring-emerald-500/30 focus:border-emerald-500/50'
+						className='flex-1 font-mono text-xs sm:text-sm bg-slate-800/50 border-emerald-700/30 text-emerald-100 focus:ring-emerald-500/30 focus:border-emerald-500/50 h-8 sm:h-9 lg:h-10'
 						placeholder='#000000'
 					/>
 				</div>
@@ -61,43 +66,45 @@ const StyleControls = ({ style, onStyleChange }: StyleControlsProps) => {
 
 			{/* Text Alignment */}
 			<div className='space-y-2'>
-				<Label className='text-emerald-200'>Text Alignment</Label>
-				<div className='flex gap-2'>
+				<Label className='text-xs sm:text-sm text-emerald-200'>
+					Text Alignment
+				</Label>
+				<div className='flex gap-1 sm:gap-2'>
 					<Button
 						variant={style.textAlign === 'left' ? 'default' : 'outline'}
 						size='sm'
 						onClick={() => onStyleChange({ textAlign: 'left' })}
-						className={`flex-1 ${
+						className={`flex-1 h-8 sm:h-9 ${
 							style.textAlign === 'left'
 								? 'bg-emerald-600/90 text-white hover:bg-emerald-700/90'
 								: 'bg-slate-800/50 border-emerald-700/30 text-emerald-200 hover:bg-emerald-600/20 hover:text-emerald-100'
 						}`}
 					>
-						<AlignLeft className='h-4 w-4' />
+						<AlignLeft className='h-3 sm:h-4 w-3 sm:w-4' />
 					</Button>
 					<Button
 						variant={style.textAlign === 'center' ? 'default' : 'outline'}
 						size='sm'
 						onClick={() => onStyleChange({ textAlign: 'center' })}
-						className={`flex-1 ${
+						className={`flex-1 h-8 sm:h-9 ${
 							style.textAlign === 'center'
 								? 'bg-emerald-600/90 text-white hover:bg-emerald-700/90'
 								: 'bg-slate-800/50 border-emerald-700/30 text-emerald-200 hover:bg-emerald-600/20 hover:text-emerald-100'
 						}`}
 					>
-						<AlignCenter className='h-4 w-4' />
+						<AlignCenter className='h-3 sm:h-4 w-3 sm:w-4' />
 					</Button>
 					<Button
 						variant={style.textAlign === 'right' ? 'default' : 'outline'}
 						size='sm'
 						onClick={() => onStyleChange({ textAlign: 'right' })}
-						className={`flex-1 ${
+						className={`flex-1 h-8 sm:h-9 ${
 							style.textAlign === 'right'
 								? 'bg-emerald-600/90 text-white hover:bg-emerald-700/90'
 								: 'bg-slate-800/50 border-emerald-700/30 text-emerald-200 hover:bg-emerald-600/20 hover:text-emerald-100'
 						}`}
 					>
-						<AlignRight className='h-4 w-4' />
+						<AlignRight className='h-3 sm:h-4 w-3 sm:w-4' />
 					</Button>
 				</div>
 			</div>
@@ -105,8 +112,10 @@ const StyleControls = ({ style, onStyleChange }: StyleControlsProps) => {
 			{/* Letter Spacing */}
 			<div className='space-y-2'>
 				<div className='flex items-center justify-between'>
-					<Label className='text-emerald-200'>Letter Spacing</Label>
-					<span className='text-sm text-emerald-300/80'>
+					<Label className='text-xs sm:text-sm text-emerald-200'>
+						Letter Spacing
+					</Label>
+					<span className='text-xs sm:text-sm text-emerald-300/80'>
 						{style.letterSpacing}px
 					</span>
 				</div>
@@ -123,8 +132,10 @@ const StyleControls = ({ style, onStyleChange }: StyleControlsProps) => {
 			{/* Line Height */}
 			<div className='space-y-2'>
 				<div className='flex items-center justify-between'>
-					<Label className='text-emerald-200'>Line Height</Label>
-					<span className='text-sm text-emerald-300/80'>
+					<Label className='text-xs sm:text-sm text-emerald-200'>
+						Line Height
+					</Label>
+					<span className='text-xs sm:text-sm text-emerald-300/80'>
 						{style.lineHeight}
 					</span>
 				</div>

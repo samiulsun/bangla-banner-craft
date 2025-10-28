@@ -51,7 +51,7 @@ const BannerPreview = forwardRef<HTMLDivElement, BannerPreviewProps>(
 				className='relative w-full aspect-[2/1] rounded-lg overflow-hidden shadow-2xl'
 				style={getBackgroundStyle()}
 			>
-				<div className='absolute inset-0 flex items-center justify-center p-12'>
+				<div className='absolute inset-0 flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12'>
 					<div
 						className='max-w-4xl w-full transition-all duration-300'
 						style={{
@@ -65,7 +65,7 @@ const BannerPreview = forwardRef<HTMLDivElement, BannerPreviewProps>(
 							overflowWrap: 'break-word',
 						}}
 					>
-						{style.text || 'আপনার টেক্সট এখানে লিখুন...'}
+						{style.text || 'Enter your text here...'}
 					</div>
 				</div>
 			</div>

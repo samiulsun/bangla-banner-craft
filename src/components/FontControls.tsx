@@ -45,15 +45,18 @@ const FontControls = ({
 	};
 
 	return (
-		<div className='space-y-4'>
+		<div className='space-y-3 sm:space-y-4'>
 			<div className='space-y-2'>
-				<Label htmlFor='font-family ' className='text-emerald-200'>
+				<Label
+					htmlFor='font-family'
+					className='text-xs sm:text-sm text-emerald-200'
+				>
 					Font Family
 				</Label>
 				<Select value={selectedFont} onValueChange={onFontChange}>
 					<SelectTrigger
 						id='font-family'
-						className='bg-slate-800/50 border-emerald-700/30 text-emerald-100 hover:bg-slate-700/50 focus:ring-emerald-500/30 focus:border-emerald-500/50'
+						className='h-9 sm:h-10 text-xs sm:text-sm bg-slate-800/50 border-emerald-700/30 text-emerald-100 hover:bg-slate-700/50 focus:ring-emerald-500/30 focus:border-emerald-500/50'
 					>
 						<SelectValue />
 					</SelectTrigger>
@@ -62,7 +65,7 @@ const FontControls = ({
 							<SelectItem
 								key={font.family}
 								value={font.family}
-								className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer'
+								className='text-xs sm:text-sm text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer'
 							>
 								<span style={{ fontFamily: font.family }}>
 									{font.displayName}
@@ -78,7 +81,7 @@ const FontControls = ({
 									<SelectItem
 										key={font.family}
 										value={font.family}
-										className='text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer'
+										className='text-xs sm:text-sm text-emerald-100 hover:bg-emerald-600/20 focus:bg-emerald-600/20 cursor-pointer'
 									>
 										<span style={{ fontFamily: font.family }}>
 											{font.displayName}
@@ -104,9 +107,9 @@ const FontControls = ({
 					variant='outline'
 					size='sm'
 					onClick={() => fileInputRef.current?.click()}
-					className='w-full bg-slate-800/50 border-emerald-700/30 text-emerald-200 hover:bg-emerald-600/20 hover:text-emerald-100 hover:border-emerald-500/50 transition-colors'
+					className='w-full h-8 sm:h-9 text-xs sm:text-sm bg-slate-800/50 border-emerald-700/30 text-emerald-200 hover:bg-emerald-600/20 hover:text-emerald-100 hover:border-emerald-500/50 transition-colors'
 				>
-					<Upload className='mr-2 h-4 w-4' />
+					<Upload className='mr-1 sm:mr-2 h-3 sm:h-4 w-3 sm:w-4' />
 					Upload Font
 				</Button>
 				<p className='mt-1 text-xs text-emerald-300/60'>

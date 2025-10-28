@@ -29,13 +29,13 @@ const ExportControls = ({ onExport }: ExportControlsProps) => {
 		setIsExporting(true);
 		try {
 			await onExport(format, scale);
-			toast.success('ব্যানার সফলভাবে ডাউনলোড হয়েছে!', {
+			toast.success('Banner downloaded successfully!', {
 				description: `Format: ${format.toUpperCase()}, Scale: ${scale}x`,
 			});
 		} catch (error) {
-			toast.error('রপ্তানি ব্যর্থ', {
+			toast.error('Export failed', {
 				description:
-					error instanceof Error ? error.message : 'অজানা ত্রুটি ঘটেছে',
+					error instanceof Error ? error.message : 'An unknown error occurred',
 			});
 		} finally {
 			setIsExporting(false);
@@ -48,9 +48,7 @@ const ExportControls = ({ onExport }: ExportControlsProps) => {
 				<div className='w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center'>
 					<Download className='w-4 h-4 text-white' />
 				</div>
-				<h3 className='text-base font-semibold text-emerald-200'>
-					ডাউনলোড করুন (Export)
-				</h3>
+				<h3 className='text-base font-semibold text-emerald-200'>Export</h3>
 			</div>
 
 			<div className='grid grid-cols-2 gap-4'>
@@ -138,12 +136,12 @@ const ExportControls = ({ onExport }: ExportControlsProps) => {
 				{isExporting ? (
 					<>
 						<Loader2 className='mr-2 h-5 w-5 animate-spin' />
-						রপ্তানি হচ্ছে...
+						Exporting...
 					</>
 				) : (
 					<>
 						<Download className='mr-2 h-5 w-5' />
-						ব্যানার ডাউনলোড করুন
+						Download Banner
 					</>
 				)}
 			</Button>

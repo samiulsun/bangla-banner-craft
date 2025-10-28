@@ -89,39 +89,39 @@ const BackgroundControls = ({
 	};
 
 	return (
-		<div className='space-y-3'>
-			<Label className='text-emerald-200'>Background</Label>
+		<div className='space-y-2 sm:space-y-3'>
+			<Label className='text-xs sm:text-sm text-emerald-200'>Background</Label>
 
 			<Tabs defaultValue='gradient' className='w-full'>
 				<TabsList className='grid w-full grid-cols-4 bg-slate-800/50 border border-emerald-700/20 rounded-lg p-1'>
 					<TabsTrigger
 						value='gradient'
-						className='text-xs text-emerald-100 data-[state=active]:bg-emerald-600/90 data-[state=active]:text-white rounded-md transition-all duration-200'
+						className='text-xs text-emerald-100 data-[state=active]:bg-emerald-600/90 data-[state=active]:text-white rounded-md transition-all duration-200 py-1.5 sm:py-2'
 					>
 						Gradient
 					</TabsTrigger>
 					<TabsTrigger
 						value='pattern'
-						className='text-xs text-emerald-100 data-[state=active]:bg-emerald-600/90 data-[state=active]:text-white rounded-md transition-all duration-200'
+						className='text-xs text-emerald-100 data-[state=active]:bg-emerald-600/90 data-[state=active]:text-white rounded-md transition-all duration-200 py-1.5 sm:py-2'
 					>
 						Pattern
 					</TabsTrigger>
 					<TabsTrigger
 						value='solid'
-						className='text-xs text-emerald-100 data-[state=active]:bg-emerald-600/90 data-[state=active]:text-white rounded-md transition-all duration-200'
+						className='text-xs text-emerald-100 data-[state=active]:bg-emerald-600/90 data-[state=active]:text-white rounded-md transition-all duration-200 py-1.5 sm:py-2'
 					>
 						Solid
 					</TabsTrigger>
 					<TabsTrigger
 						value='custom'
-						className='text-xs text-emerald-100 data-[state=active]:bg-emerald-600/90 data-[state=active]:text-white rounded-md transition-all duration-200'
+						className='text-xs text-emerald-100 data-[state=active]:bg-emerald-600/90 data-[state=active]:text-white rounded-md transition-all duration-200 py-1.5 sm:py-2'
 					>
 						Custom
 					</TabsTrigger>
 				</TabsList>
 
-				<TabsContent value='gradient' className='space-y-2 mt-4'>
-					<div className='grid grid-cols-2 gap-2'>
+				<TabsContent value='gradient' className='space-y-2 mt-3 sm:mt-4'>
+					<div className='grid grid-cols-2 gap-1.5 sm:gap-2'>
 						{GRADIENT_PRESETS.map((preset) => (
 							<button
 								key={preset.name}
@@ -131,7 +131,7 @@ const BackgroundControls = ({
 										backgroundValue: preset.value,
 									})
 								}
-								className='h-12 rounded-lg border-2 border-emerald-700/30 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-200 relative overflow-hidden'
+								className='h-10 sm:h-12 rounded-lg border-2 border-emerald-700/30 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-200 relative overflow-hidden'
 								style={{ background: preset.value }}
 								title={preset.name}
 							>
@@ -141,8 +141,8 @@ const BackgroundControls = ({
 					</div>
 				</TabsContent>
 
-				<TabsContent value='pattern' className='space-y-2 mt-4'>
-					<div className='grid grid-cols-2 gap-2'>
+				<TabsContent value='pattern' className='space-y-2 mt-3 sm:mt-4'>
+					<div className='grid grid-cols-2 gap-1.5 sm:gap-2'>
 						{PATTERN_PRESETS.map((preset) => (
 							<button
 								key={preset.name}
@@ -178,7 +178,7 @@ const BackgroundControls = ({
 					</p>
 				</TabsContent>
 
-				<TabsContent value='solid' className='space-y-2 mt-4'>
+				<TabsContent value='solid' className='space-y-2 mt-3 sm:mt-4'>
 					<div className='flex gap-2'>
 						<Input
 							type='color'
@@ -190,7 +190,7 @@ const BackgroundControls = ({
 									backgroundValue: e.target.value,
 								})
 							}
-							className='h-10 w-20 cursor-pointer bg-slate-800/50 border-emerald-700/30 rounded-lg'
+							className='h-8 sm:h-9 lg:h-10 w-16 sm:w-18 lg:w-20 cursor-pointer bg-slate-800/50 border-emerald-700/30 rounded-lg'
 						/>
 						<Input
 							type='text'
@@ -202,13 +202,13 @@ const BackgroundControls = ({
 									backgroundValue: e.target.value,
 								})
 							}
-							className='flex-1 font-mono text-sm bg-slate-800/50 border-emerald-700/30 text-emerald-100 focus:ring-emerald-500/30 focus:border-emerald-500/50 rounded-lg'
+							className='flex-1 font-mono text-xs sm:text-sm bg-slate-800/50 border-emerald-700/30 text-emerald-100 focus:ring-emerald-500/30 focus:border-emerald-500/50 rounded-lg h-8 sm:h-9 lg:h-10'
 							placeholder='#000000'
 						/>
 					</div>
 				</TabsContent>
 
-				<TabsContent value='custom' className='space-y-2 mt-4'>
+				<TabsContent value='custom' className='space-y-2 mt-3 sm:mt-4'>
 					<input
 						ref={fileInputRef}
 						type='file'
@@ -221,9 +221,9 @@ const BackgroundControls = ({
 						variant='outline'
 						size='sm'
 						onClick={() => fileInputRef.current?.click()}
-						className='w-full bg-slate-800/50 border-emerald-700/30 text-emerald-200 hover:bg-emerald-600/20 hover:text-emerald-100 hover:border-emerald-500/50 transition-colors'
+						className='w-full h-8 sm:h-9 text-xs sm:text-sm bg-slate-800/50 border-emerald-700/30 text-emerald-200 hover:bg-emerald-600/20 hover:text-emerald-100 hover:border-emerald-500/50 transition-colors'
 					>
-						<Upload className='mr-2 h-4 w-4' />
+						<Upload className='mr-1 sm:mr-2 h-3 sm:h-4 w-3 sm:w-4' />
 						Upload Image
 					</Button>
 					{style.backgroundType === 'custom' && (
