@@ -6,55 +6,71 @@ import { BannerStyle } from '@/types/banner';
 import { forwardRef } from 'react';
 
 interface BannerPreviewProps {
-  style: BannerStyle;
+	style: BannerStyle;
 }
 
 const BannerPreview = forwardRef<HTMLDivElement, BannerPreviewProps>(
-  ({ style }, ref) => {
-    // Build background CSS based on type
-    const getBackgroundStyle = () => {
-      switch (style.backgroundType) {
-        case 'gradient':
-        case 'template':
-          return { background: style.backgroundValue };
-        case 'custom':
-          return {
-            backgroundImage: `url(${style.backgroundValue})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          };
-        case 'solid':
-        default:
-          return { backgroundColor: style.backgroundColor };
-      }
-    };
+	({ style }, ref) => {
+		// Build background CSS based on type
+		const getBackgroundStyle = () => {
+			switch (style.backgroundType) {
+				case 'gradient':
+					return { background: style.backgroundValue };
+				case 'custom':
+					return {
+						backgroundImage: `url(${style.backgroundValue})`,
+						backgroundSize: 'cover',
+						backgroundPosition: 'center',
+					};
+				case 'pattern':
+					if (style.backgroundValue === 'dotted-squares-dark') {
+						return {
+							backgroundColor: '#1a1a1a',
+							backgroundImage:
+								'radial-gradient(circle, #333 1px, transparent 1px)',
+							backgroundSize: '20px 20px',
+						};
+					} else if (style.backgroundValue === 'grid-lines') {
+						return {
+							backgroundColor: '#2a2a2a',
+							backgroundImage:
+								'linear-gradient(#444 1px, transparent 1px), linear-gradient(90deg, #444 1px, transparent 1px)',
+							backgroundSize: '25px 25px',
+						};
+					}
+					return { backgroundColor: style.backgroundColor };
+				case 'solid':
+				default:
+					return { backgroundColor: style.backgroundColor };
+			}
+		};
 
-    return (
-      <div
-        ref={ref}
-        className="relative w-full aspect-[2/1] rounded-lg overflow-hidden shadow-2xl"
-        style={getBackgroundStyle()}
-      >
-        <div className="absolute inset-0 flex items-center justify-center p-12">
-          <div
-            className="max-w-4xl w-full transition-all duration-300"
-            style={{
-              fontFamily: style.fontFamily,
-              fontSize: `${style.fontSize}px`,
-              color: style.color,
-              textAlign: style.textAlign,
-              letterSpacing: `${style.letterSpacing}px`,
-              lineHeight: style.lineHeight,
-              wordBreak: 'break-word',
-              overflowWrap: 'break-word',
-            }}
-          >
-            {style.text || 'আপনার টেক্সট এখানে লিখুন...'}
-          </div>
-        </div>
-      </div>
-    );
-  }
+		return (
+			<div
+				ref={ref}
+				className='relative w-full aspect-[2/1] rounded-lg overflow-hidden shadow-2xl'
+				style={getBackgroundStyle()}
+			>
+				<div className='absolute inset-0 flex items-center justify-center p-12'>
+					<div
+						className='max-w-4xl w-full transition-all duration-300'
+						style={{
+							fontFamily: style.fontFamily,
+							fontSize: `${style.fontSize}px`,
+							color: style.color,
+							textAlign: style.textAlign,
+							letterSpacing: `${style.letterSpacing}px`,
+							lineHeight: style.lineHeight,
+							wordBreak: 'break-word',
+							overflowWrap: 'break-word',
+						}}
+					>
+						{style.text || 'আপনার টেক্সট এখানে লিখুন...'}
+					</div>
+				</div>
+			</div>
+		);
+	}
 );
 
 BannerPreview.displayName = 'BannerPreview';

@@ -3,33 +3,36 @@
  */
 
 export interface BannerStyle {
-  text: string;
-  fontFamily: string;
-  fontSize: number;
-  color: string;
-  textAlign: 'left' | 'center' | 'right';
-  letterSpacing: number;
-  lineHeight: number;
-  
-  // Background
-  backgroundType: 'template' | 'gradient' | 'custom' | 'solid';
-  backgroundValue: string; // template ID, gradient CSS, custom image URL, or solid color
-  backgroundColor: string; // fallback solid color
-}
+	text: string;
+	fontFamily: string;
+	fontSize: number;
+	color: string;
+	textAlign: 'left' | 'center' | 'right';
+	letterSpacing: number;
+	lineHeight: number;
 
-export interface Template {
-  id: string;
-  name: string;
-  nameInBangla: string;
-  thumbnailUrl: string;
-  backgroundUrl: string;
-  suggestedStyle: Partial<BannerStyle>;
+	// Background
+	backgroundType: 'gradient' | 'custom' | 'solid' | 'pattern';
+	backgroundValue: string; // gradient CSS, custom image URL, solid color, or pattern name
+	backgroundColor: string; // fallback solid color
 }
 
 export interface CustomFont {
-  family: string;
-  url: string;
-  displayName: string;
+	family: string;
+	url: string;
+	displayName: string;
+}
+
+export interface Template {
+	id: string;
+	name: string;
+	thumbnailUrl: string;
+	backgroundUrl: string;
+	suggestedStyle: {
+		fontSize: number;
+		color: string;
+		textAlign: 'left' | 'center' | 'right';
+	};
 }
 
 export type ExportFormat = 'png' | 'jpeg' | 'svg';

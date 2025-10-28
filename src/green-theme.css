@@ -1,0 +1,12 @@
+/* Green leaves background - This should be replaced with the actual uploaded image */
+/* For now using a CSS gradient that mimics dark green leaves */
+body {
+	--green-leaves-bg: linear-gradient(
+		135deg,
+		rgba(6, 78, 59, 0.95) 0%,
+		rgba(20, 83, 45, 0.9) 25%,
+		rgba(5, 46, 22, 0.95) 50%,
+		rgba(17, 94, 89, 0.9) 75%,
+		rgba(6, 78, 59, 0.95) 100%
+	);
+}
