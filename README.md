@@ -1,31 +1,31 @@
-# Banner Craft
+# Bangla Banner Craft
 
-A modern, responsive web application for creating and exporting professional banners with custom text, fonts, and designs. Perfect for social media content, marketing materials, and digital graphics.
+A responsive web application for creating beautiful Bangla text banners. Customize text, fonts, styles, and backgrounds, then export your creations instantly as PNG, JPEG, or SVG.
 
 ## 🎯 Overview
 
-Banner Craft is a comprehensive banner maker that empowers users to create stunning visual content with ease. The application features a live preview system, extensive customization options, and multi-format export capabilities, all wrapped in a responsive design that works seamlessly across desktop and mobile devices.
+Bangla Banner Craft is a user-friendly, single-page application designed for creating stunning visual content with Bangla text. It features a live preview, extensive customization options, and high-quality export capabilities, all within a sleek, responsive interface that works seamlessly on both desktop and mobile devices.
 
 ## ✨ Features
-
-### 🎨 Design Capabilities
-
-- **Live Preview**: Real-time banner preview with instant updates
-- **Custom Text**: Multi-line text input with dynamic formatting
-- **Font Selection**: Extensive font library with web-safe and custom fonts
-- **Typography Controls**: Font size, weight, alignment, and spacing adjustments
-- **Color Customization**: Full color picker for text and background colors
-- **Background Options**: Solid colors, gradients, and custom styling
-
-### 📱 Responsive Design
-
-- **Mobile-First Approach**: Optimized for mobile devices with preview-first layout
-- **Adaptive Interface**: Responsive components that adapt to screen size
-- **Touch-Friendly**: Mobile-optimized controls and interactions
-- **Smart Defaults**: Automatic font sizing based on device (32px mobile, 64px desktop)
+-   **Live Preview**: See your changes in real-time as you design your banner.
+-   **Multi-line Text Input**: Add and format multiple lines of text with ease. `dir="auto"` is used for proper text direction handling.
+-   **Font Customization**:
+    -   Choose from a curated list of pre-loaded Google Fonts suitable for Bangla script (Hind Siliguri, Noto Sans Bengali, Tiro Bangla).
+    -   Upload your own font files (TTF, WOFF, WOFF2, OTF) for complete creative control.
+-   **Advanced Style Controls**:
+    -   Adjust font size, text color (with a color picker and hex input), and text alignment (left, center, right).
+    -   Fine-tune typography with letter spacing and line height sliders.
+-   **Dynamic Backgrounds**:
+    -   Select from pre-defined gradient presets.
+    -   Use stylish patterns like dotted squares or grid lines.
+    -   Choose any solid color.
+    -   Upload a custom image to use as your banner background.
+-   **High-Quality Export**:
+    -   Download your banner as a PNG, JPEG, or scalable SVG.
+    -   Choose from multiple resolutions (1x, 2x, 4x) for crisp, high-quality images suitable for web and print.
+-   **Responsive Design**: The application is optimized for a mobile-first experience, with the layout adapting intelligently to your screen size. Controls are easy to use on touch devices.
 
 ### 💾 Export Options
-
 - **Multiple Formats**: Export as PNG, JPEG, or SVG
 - **High Quality**: Professional-grade output suitable for print and digital use
 - **Instant Download**: One-click export with automatic file naming
@@ -67,24 +67,6 @@ Banner Craft is a comprehensive banner maker that empowers users to create stunn
 - **TypeScript 5.8.3**: Type-safe development with enhanced developer experience
 - **Vite 5.4.19**: Fast build tool with hot module replacement
 
-### UI & Styling
-
-- **Tailwind CSS 3.4.15**: Utility-first CSS framework for responsive design
-- **shadcn/ui**: High-quality React components built on Radix UI
-- **Radix UI**: Accessible, unstyled UI primitives
-- **Lucide React**: Beautiful, customizable icons
-
-### Core Features
-
-- **html-to-image**: Canvas-based image export functionality
-- **React Hook Form**: Efficient form handling with validation
-- **Framer Motion**: Smooth animations and transitions (ready for implementation)
-
-### Development Tools
-
-- **ESLint**: Code linting with React and TypeScript support
-- **PostCSS**: CSS processing with Tailwind CSS integration
-- **Bun**: Fast package manager and runtime
 
 ## 🚀 Getting Started
 
@@ -112,10 +94,6 @@ bun run dev
 npm run dev
 ```
 
-### Development Server
-
-Open [http://localhost:5173](http://localhost:5173) to view the application in your browser.
-
 ## 📁 Project Structure
 
 ```
@@ -138,38 +116,6 @@ src/
 └── utils/              # Export and font loading utilities
 ```
 
-## 🔧 Building for Production
-
-```bash
-# Build for production
-bun run build
-# Or with npm
-npm run build
-
-# Preview production build
-bun run preview
-# Or with npm
-npm run preview
-```
-
 ## 🤝 Contributing
 
 We welcome contributions to Banner Craft! Please feel free to submit issues, feature requests, and pull requests.
-
-### Development Guidelines
-
-- Follow TypeScript best practices
-- Maintain responsive design principles
-- Test across different devices and browsers
-- Keep components modular and reusable
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🎉 Acknowledgments
-
-- Built with modern React and TypeScript
-- UI components powered by shadcn/ui and Radix UI
-- Icons by Lucide React
-- Styling with Tailwind CSS
